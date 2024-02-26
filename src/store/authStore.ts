@@ -3,6 +3,14 @@ import { signUpformSchema } from "@/pages/auth/SignUpPage";
 import { z } from "zod";
 import { create } from "zustand";
 
+export interface Organization {
+  id: number;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface User {
   id: 1;
   firstName: string;
@@ -10,7 +18,7 @@ export interface User {
   email: string;
   phoneNumber: string;
   role: string;
-  organization: {};
+  organization: Organization;
   isLogged: boolean;
 }
 

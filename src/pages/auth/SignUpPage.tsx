@@ -22,7 +22,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 
-export const signUpformSchema = z.object({
+const signUpformSchema = z.object({
   firstName: z.string().min(2),
   lastName: z.string(),
   email: z.string().email(),
