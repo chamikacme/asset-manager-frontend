@@ -1,15 +1,8 @@
 import AxiosClient from "@/lib/axios-client/axiosClient";
-import { signUpformSchema } from "@/pages/auth/SignUpPage";
+import { Organization } from "@/types/Organization";
+import { signUpformSchema } from "@/types/SignUpFormSchema";
 import { z } from "zod";
 import { create } from "zustand";
-
-export interface Organization {
-  id: number;
-  name: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-}
 
 export interface User {
   id: 1;

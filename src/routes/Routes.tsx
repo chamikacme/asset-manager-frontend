@@ -10,6 +10,8 @@ import SettingsPage from "@/pages/settings/SettingsPage";
 import { createBrowserRouter } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
+import AdminRoute from "./AdminRoutes";
+import MembersPage from "@/pages/members/MembersPage";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,15 @@ const router = createBrowserRouter([
       {
         path: "/settings",
         element: <SettingsPage />,
+      },
+    ],
+  },
+  {
+    element: <AdminRoute element={<MainLayout />} />,
+    children: [
+      {
+        path: "/organization/members",
+        element: <MembersPage />,
       },
     ],
   },

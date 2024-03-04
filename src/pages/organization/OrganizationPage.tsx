@@ -27,7 +27,12 @@ const OrganizationPage = () => {
           </Card>
           {user.role === "admin" || user.role === "manager" ? (
             <div className="grid grid-cols-2 gap-2">
-              <Card className="p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 hover:border-primary group">
+              <Card
+                className="p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 hover:border-primary group"
+                onClick={() => {
+                  navigate("/organization/members");
+                }}
+              >
                 <Users size={75} />
                 <div className="text-2xl font-semibold mt-2">Members</div>
                 <div className="font-normal text-sm text-slate-400 group-hover:text-primary">
