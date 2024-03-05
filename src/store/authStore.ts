@@ -5,7 +5,7 @@ import { z } from "zod";
 import { create } from "zustand";
 
 export interface User {
-  id: 1;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;

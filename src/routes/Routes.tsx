@@ -53,7 +53,7 @@ const router = createBrowserRouter([
     element: <AdminRoute element={<MainLayout />} />,
     children: [
       {
-        path: "/organization/members",
+        path: "/members",
         element: <MembersPage />,
       },
     ],

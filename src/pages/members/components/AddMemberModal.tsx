@@ -3,6 +3,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -14,22 +15,25 @@ import { useToast } from "@/components/ui/use-toast";
 import AxiosClient from "@/lib/axios-client/axiosClient";
 import useLoadingStore from "@/store/loadingStore";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 interface AddMemberModalProps {
   children?: ReactNode;
+  refreshData: () => void;
 }
 
 const addMemberSchema = z.object({
   userEmail: z.string().email(),
 });
 
-const AddMemberModal = ({ children }: AddMemberModalProps) => {
+const AddMemberModal = ({ children, refreshData }: AddMemberModalProps) => {
   const setLoading = useLoadingStore((state) => state.setLoading);
 
   const { toast } = useToast();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm<z.infer<typeof addMemberSchema>>({
     resolver: zodResolver(addMemberSchema),
@@ -47,7 +51,8 @@ const AddMemberModal = ({ children }: AddMemberModalProps) => {
           title: "Member added",
           description: "The member has been added to the organization",
         });
-        location.reload();
+        setIsOpen(false);
+        refreshData();
       })
       .catch((error) => {
         form.setError("root", {
@@ -59,12 +64,16 @@ const AddMemberModal = ({ children }: AddMemberModalProps) => {
           variant: "destructive",
         });
       });
-
     setLoading(false);
   }
 
   return (
-    <Dialog>
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        setIsOpen(open);
+      }}
+    >
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
@@ -90,18 +99,16 @@ const AddMemberModal = ({ children }: AddMemberModalProps) => {
             </FormItem>
 
             <FormMessage>{form.formState.errors.root?.message}</FormMessage>
-            <FormItem>
-              <Button
-                type="submit"
-                className="mx-auto w-full"
-                onClick={form.handleSubmit(onSubmit)}
-                disabled={form.formState.isSubmitting}
-              >
-                Create
-              </Button>
-            </FormItem>
           </Form>
         </div>
+        <DialogFooter>
+          <Button
+            onClick={form.handleSubmit(onSubmit)}
+            disabled={form.formState.isSubmitting}
+          >
+            Add Member
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

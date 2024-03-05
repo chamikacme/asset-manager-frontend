@@ -30,7 +30,7 @@ const OrganizationPage = () => {
               <Card
                 className="p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 hover:border-primary group"
                 onClick={() => {
-                  navigate("/organization/members");
+                  navigate("/members");
                 }}
               >
                 <Users size={75} />
