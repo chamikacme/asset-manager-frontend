@@ -51,6 +51,7 @@ const AddMemberModal = ({ children, refreshData }: AddMemberModalProps) => {
           title: "Member added",
           description: "The member has been added to the organization",
         });
+        form.reset();
         setIsOpen(false);
         refreshData();
       })
@@ -75,7 +76,7 @@ const AddMemberModal = ({ children, refreshData }: AddMemberModalProps) => {
       }}
     >
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Add Member</DialogTitle>
           <DialogDescription>

@@ -24,6 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import UpdateRoleModal from "./components/UpdateRoleModal";
 
 const MembersPage = () => {
   const { toast } = useToast();
@@ -34,7 +35,6 @@ const MembersPage = () => {
   const [refreshData, setRefreshData] = useState(false);
 
   useEffect(() => {
-    console.log("MembersPage rendered");
     const fetchMembers = async () => {
       setLoading(true);
       await AxiosClient()
@@ -87,7 +87,22 @@ const MembersPage = () => {
                   </TableCell>
                   <TableCell>{member.email}</TableCell>
                   <TableCell>
-                    <Badge>{member.role.toLocaleUpperCase()}</Badge>
+                    {user.role == "admin" ? (
+                      <UpdateRoleModal
+                        member={member}
+                        refreshData={() => {
+                          setRefreshData(!refreshData);
+                        }}
+                      >
+                        <Badge className="cursor-pointer">
+                          {member.role.toLocaleUpperCase()}
+                        </Badge>
+                      </UpdateRoleModal>
+                    ) : (
+                      <Badge className="cursor-pointer">
+                        {member.role.toLocaleUpperCase()}
+                      </Badge>
+                    )}
                   </TableCell>
                   <TableCell className="flex gap-3 items-center justify-center">
                     <TooltipProvider>

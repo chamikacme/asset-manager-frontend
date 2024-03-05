@@ -59,7 +59,7 @@ const RemoveMemberModal = ({ children, member,refreshData }: RemoveMemberModalPr
       }}
     >
       <DialogTrigger>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Remove Member</DialogTitle>
           <DialogDescription>
