@@ -101,6 +101,7 @@ const SignUpPage = () => {
                 <Input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   {...form.register("email")}
                   onKeyDown={handleKeyDown}
                 />
