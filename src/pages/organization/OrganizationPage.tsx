@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import useAuthStore from "@/store/authStore";
-import { Laptop, PlusCircle, Users } from "lucide-react";
+import { PlusCircle, TabletSmartphone, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import CreateOrganizationModal from "./components/CreateOrganizationModal";
 
@@ -42,10 +42,10 @@ const OrganizationPage = () => {
               <Card
                 className="p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-50 hover:border-primary group"
                 onClick={() => {
-                  navigate("/assets");
+                  navigate("/organization-assets");
                 }}
               >
-                <Laptop size={75} />
+                <TabletSmartphone size={75} />
                 <div className="text-2xl font-semibold mt-2">Assets</div>
                 <div className="font-normal text-sm text-slate-400 group-hover:text-primary">
                   View organization assets
@@ -59,7 +59,7 @@ const OrganizationPage = () => {
                 navigate("/assets");
               }}
             >
-              <Laptop size={75} />
+              <TabletSmartphone size={75} />
               <div className="text-2xl font-semibold mt-2">Assets</div>
               <div className="font-normal text-sm text-slate-400 group-hover:text-primary">
                 View my assets

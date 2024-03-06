@@ -12,6 +12,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 import AdminRoute from "./AdminRoutes";
 import MembersPage from "@/pages/members/MembersPage";
+import ProfilePage from "@/pages/profile/ProfilePage";
+import OrganizationAssetsPage from "@/pages/organization-assets/OrganizationAssetsPage";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,10 @@ const router = createBrowserRouter([
         path: "/settings",
         element: <SettingsPage />,
       },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
     ],
   },
   {
@@ -55,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/members",
         element: <MembersPage />,
+      },
+      {
+        path: "/organization-assets",
+        element: <OrganizationAssetsPage />,
       },
     ],
   },
