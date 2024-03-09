@@ -9,18 +9,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { useToast } from "@/components/ui/use-toast";
 import AxiosClient from "@/lib/axios-client/axiosClient";
 import useLoadingStore from "@/store/loadingStore";
 import { Asset } from "@/types/Asset";
-import { Eye, MonitorX } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AddAssetModal from "./components/AddAssetModal";
 import RemoveAssetModal from "./components/RemoveAssetModal";
 
@@ -79,35 +74,39 @@ const OrganizationAssetsPage = () => {
             {assets.map((asset) => {
               return (
                 <TableRow key={asset.id}>
-                  <TableCell>{asset.name}</TableCell>
                   <TableCell>
-                    {asset.assignedTo != null
-                      ? `${asset.assignedTo.firstName} ${
-                          asset.assignedTo.lastName ?? ""
-                        }`
-                      : "Unassigned"}
+                    <Link
+                      to={"/organization-assets/" + asset.id}
+                      className="hover:underline"
+                    >
+                      {asset.name}
+                    </Link>
                   </TableCell>
                   <TableCell>
-                    <Badge>{asset.condition.toLocaleUpperCase()}</Badge>
+                    {asset?.assignedTo ? (
+                      <Link to={"/members/" + asset.assignedTo.id}>
+                        <Badge className="uppercase">
+                          {asset.assignedTo.firstName}{" "}
+                          {asset.assignedTo.lastName}
+                        </Badge>
+                      </Link>
+                    ) : (
+                      <Badge className="uppercase">UNASSIGNED</Badge>
+                    )}
                   </TableCell>
-                  <TableCell className="flex gap-3 items-center justify-center">
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Eye className="w-5 h-5 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>View</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                  <TableCell>
+                    <Badge className="uppercase">
+                      {asset.condition.replace("_", " ")}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
                     <RemoveAssetModal
                       asset={asset}
                       refreshData={() => {
                         setRefreshData(!refreshData);
                       }}
                     >
-                      <MonitorX className="w-5 h-5 cursor-pointer" />
+                      <Trash2 className="w-5 h-5 cursor-pointer" />
                     </RemoveAssetModal>
                   </TableCell>
                 </TableRow>

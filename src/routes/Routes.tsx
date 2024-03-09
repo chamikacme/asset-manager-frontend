@@ -5,15 +5,16 @@ import SignInPage from "@/pages/auth/SignInPage";
 import SignUpPage from "@/pages/auth/SignUpPage";
 import NotFoundPage from "@/pages/common/NotFoundPage";
 import DashboardPage from "@/pages/dashboard/DashboardPage";
+import MembersPage from "@/pages/members/MembersPage";
+import OrganizationAssetsPage from "@/pages/organization-assets/OrganizationAssetsPage";
+import OrganizationAssetPage from "@/pages/organization-assets/subpages/organization-asset/OrganizationAssetPage";
 import OrganizationPage from "@/pages/organization/OrganizationPage";
+import ProfilePage from "@/pages/profile/ProfilePage";
 import SettingsPage from "@/pages/settings/SettingsPage";
 import { createBrowserRouter } from "react-router-dom";
+import AdminRoute from "./AdminRoutes";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
-import AdminRoute from "./AdminRoutes";
-import MembersPage from "@/pages/members/MembersPage";
-import ProfilePage from "@/pages/profile/ProfilePage";
-import OrganizationAssetsPage from "@/pages/organization-assets/OrganizationAssetsPage";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/organization-assets",
         element: <OrganizationAssetsPage />,
+      },
+      {
+        path: "/organization-assets/:id",
+        element: <OrganizationAssetPage />,
       },
     ],
   },

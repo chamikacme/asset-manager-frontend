@@ -21,7 +21,7 @@ const OrganizationPage = () => {
               </div>
               <div>
                 <div className="text-sm">Role:</div>
-                <div className="text-xl">{user.role.toLocaleUpperCase()}</div>
+                <div className="text-xl uppercase">{user.role}</div>
               </div>
             </div>
           </Card>

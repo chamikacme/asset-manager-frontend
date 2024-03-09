@@ -94,13 +94,13 @@ const MembersPage = () => {
                           setRefreshData(!refreshData);
                         }}
                       >
-                        <Badge className="cursor-pointer">
-                          {member.role.toLocaleUpperCase()}
+                        <Badge className="cursor-pointer uppercase">
+                          {member.role}
                         </Badge>
                       </UpdateRoleModal>
                     ) : (
-                      <Badge className="cursor-pointer">
-                        {member.role.toLocaleUpperCase()}
+                      <Badge className="cursor-pointer uppercase">
+                        {member.role}
                       </Badge>
                     )}
                   </TableCell>

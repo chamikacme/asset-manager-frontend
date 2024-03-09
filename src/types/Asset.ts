@@ -6,4 +6,7 @@ export type Asset = {
   description: string;
   condition: string;
   assignedTo: OrganizationMember;
+  createdAt: string;
+  updatedAt: string;
+  createdBy: OrganizationMember;
 };
