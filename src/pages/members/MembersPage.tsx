@@ -14,16 +14,11 @@ import AxiosClient from "@/lib/axios-client/axiosClient";
 import useAuthStore from "@/store/authStore";
 import useLoadingStore from "@/store/loadingStore";
 import { OrganizationMember } from "@/types/OrganizationMember";
-import { Eye, Laptop, UserMinus } from "lucide-react";
+import { UserMinus } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import AddMemberModal from "./components/AddMemberModal";
 import RemoveMemberModal from "./components/RemoveMemberModal";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import UpdateRoleModal from "./components/UpdateRoleModal";
 
 const MembersPage = () => {
@@ -83,7 +78,17 @@ const MembersPage = () => {
               return (
                 <TableRow key={member.id}>
                   <TableCell>
-                    {member.firstName} {member.lastName}
+                    <Link
+                      to={`/members/${member.id}`}
+                      className="hover:underline"
+                    >
+                      {member.firstName} {member.lastName}{" "}
+                    </Link>
+                    {user.id == member?.id && (
+                      <span className="text-xs text-muted-foreground font-normal group-hover:no-underline">
+                        (You)
+                      </span>
+                    )}
                   </TableCell>
                   <TableCell>{member.email}</TableCell>
                   <TableCell>
@@ -105,27 +110,6 @@ const MembersPage = () => {
                     )}
                   </TableCell>
                   <TableCell className="flex gap-3 items-center justify-center">
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Eye className="w-5 h-5 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>View</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Laptop className="w-5 h-5 cursor-pointer" />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Assets</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-
                     {user.role == "admin" && user.id != member.id && (
                       <RemoveMemberModal
                         member={member}

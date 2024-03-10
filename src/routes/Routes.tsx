@@ -15,6 +15,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AdminRoute from "./AdminRoutes";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
+import MemberPage from "@/pages/members/subpages/member/MemberPage";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/members",
         element: <MembersPage />,
+      },
+      {
+        path: "/members/:id",
+        element: <MemberPage />,
       },
       {
         path: "/organization-assets",
