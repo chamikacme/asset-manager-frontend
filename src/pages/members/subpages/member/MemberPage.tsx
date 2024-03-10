@@ -26,6 +26,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { z } from "zod";
 import UpdateRoleModal from "../../components/UpdateRoleModal";
 import Expander from "@/components/ui/expander";
+import UnassignMemberModal from "@/pages/organization-assets/subpages/organization-asset/components/UnassignMemberModal";
 
 const MemberUpdateFormSchema = z.object({
   firstName: z.string().min(2, { message: "First name is too short" }),
@@ -328,7 +329,16 @@ const MemberPage = () => {
                           </Badge>
                         </TableCell>
                         <TableCell>
-                          <Badge className="uppercase">Un-assign</Badge>
+                          <UnassignMemberModal
+                            asset={asset}
+                            refreshData={() => {
+                              setRefreshData(!refreshData);
+                            }}
+                          >
+                            <Badge className="uppercase cursor-pointer">
+                              Un-assign
+                            </Badge>
+                          </UnassignMemberModal>
                         </TableCell>
                       </TableRow>
                     );

@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { z } from "zod";
 import UpdateAssetConditionModal from "./components/UpdateConditionModal";
+import AssignMemberModal from "./components/AssignMemberModal";
+import UnassignMemberModal from "./components/UnassignMemberModal";
 
 const AssetUpdateFormSchema = z.object({
   name: z.string().min(2),
@@ -248,13 +250,27 @@ const AssetPage = () => {
                         </Link>
                         <div className="text-xs gap-0.5 flex">
                           (
-                          <span className="hover:underline cursor-pointer text-primary">
-                            Change
-                          </span>
+                          <AssignMemberModal
+                            asset={asset}
+                            refreshData={() => {
+                              setRefreshData(!refreshData);
+                            }}
+                          >
+                            <span className="hover:underline cursor-pointer text-primary">
+                              Change
+                            </span>
+                          </AssignMemberModal>
                           ·
-                          <span className="hover:underline cursor-pointer text-primary">
-                            Un-assign
-                          </span>
+                          <UnassignMemberModal
+                            asset={asset}
+                            refreshData={() => {
+                              setRefreshData(!refreshData);
+                            }}
+                          >
+                            <span className="hover:underline cursor-pointer text-primary">
+                              Un-assign
+                            </span>
+                          </UnassignMemberModal>
                           )
                         </div>
                       </>
@@ -263,9 +279,16 @@ const AssetPage = () => {
                         <Badge className="uppercase">UNASSIGNED</Badge>
                         <div className="text-xs gap-0.5 flex">
                           (
-                          <span className="hover:underline cursor-pointer text-primary">
-                            Assign
-                          </span>
+                          <AssignMemberModal
+                            asset={asset}
+                            refreshData={() => {
+                              setRefreshData(!refreshData);
+                            }}
+                          >
+                            <span className="hover:underline cursor-pointer text-primary">
+                              Assign
+                            </span>
+                          </AssignMemberModal>
                           )
                         </div>
                       </>
