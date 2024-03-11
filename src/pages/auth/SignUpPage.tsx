@@ -17,17 +17,11 @@ import {
 import { Input } from "@/components/ui/input";
 import useAuthStore from "@/store/authStore";
 import useLoadingStore from "@/store/loadingStore";
+import { signUpformSchema } from "@/types/SignUpFormSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
-
-export const signUpformSchema = z.object({
-  firstName: z.string().min(2),
-  lastName: z.string(),
-  email: z.string().email(),
-  password: z.string().min(8),
-});
 
 const SignUpPage = () => {
   const signup = useAuthStore((state) => state.signup);
@@ -107,6 +101,7 @@ const SignUpPage = () => {
                 <Input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   {...form.register("email")}
                   onKeyDown={handleKeyDown}
                 />

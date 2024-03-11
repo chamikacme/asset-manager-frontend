@@ -52,13 +52,13 @@ const AvatarDropdown = () => {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link to="/settings/profile">Profile</Link>
+          <Link to="/profile">Profile</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <Link to="/dashboard">Dashboard</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link to="/settings/profile">Settings</Link>
+          <Link to="/settings">Settings</Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
           <div onClick={handleLogout}>Logout</div>

@@ -73,6 +73,7 @@ const SignInPage = () => {
                 <Input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   onKeyDown={handleKeyDown}
                   {...form.register("email")}
                 />

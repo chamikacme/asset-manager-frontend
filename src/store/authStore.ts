@@ -1,16 +1,17 @@
 import AxiosClient from "@/lib/axios-client/axiosClient";
-import { signUpformSchema } from "@/pages/auth/SignUpPage";
+import { Organization } from "@/types/Organization";
+import { signUpformSchema } from "@/types/SignUpFormSchema";
 import { z } from "zod";
 import { create } from "zustand";
 
 export interface User {
-  id: 1;
+  id: string;
   firstName: string;
   lastName: string;
   email: string;
   phoneNumber: string;
   role: string;
-  organization: {};
+  organization: Organization;
   isLogged: boolean;
 }
 
