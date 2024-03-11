@@ -26,11 +26,13 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import AxiosClient from "@/lib/axios-client/axiosClient";
+import useAuthStore from "@/store/authStore";
 import useLoadingStore from "@/store/loadingStore";
 import { OrganizationMember } from "@/types/OrganizationMember";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReactNode, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 interface UpdateRoleModalProps {
@@ -51,6 +53,12 @@ const UpdateRoleModal = ({
   member,
 }: UpdateRoleModalProps) => {
   const setLoading = useLoadingStore((state) => state.setLoading);
+
+  const user = useAuthStore((state) => state.user);
+
+  const loadSession = useAuthStore((state) => state.loadSession);
+
+  const navigate = useNavigate();
 
   const { toast } = useToast();
 
@@ -77,7 +85,12 @@ const UpdateRoleModal = ({
         });
         form.reset();
         setIsOpen(false);
-        refreshData();
+        if (user.id === member.id && data.role === "member") {
+          navigate("/organization");
+          loadSession();
+        } else {
+          refreshData();
+        }
       })
       .catch((error) => {
         form.setError("root", {

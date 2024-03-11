@@ -138,7 +138,7 @@ const AssignMemberModal = ({
                   >
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select asset condition" />
+                        <SelectValue placeholder="Select a member" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
