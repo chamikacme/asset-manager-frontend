@@ -22,7 +22,7 @@ function App() {
     <div>
       <RouterProvider router={router} />
       {isPageLoading && (
-        <div className="fixed top-0 left-0 bg-slate-600 bg-opacity-50">
+        <div className="fixed top-0 left-0 bg-slate-600 bg-opacity-50 z-50">
           <LoadingPage />
         </div>
       )}
