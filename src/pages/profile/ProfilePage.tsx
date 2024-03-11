@@ -86,9 +86,9 @@ const ProfilePage = () => {
 
   return (
     <div className="h-full p-2">
-      <Card className="p-6 relative h-full">
+      <Card className="p-6 relative">
         <Pencil
-          className={`absolute top-5 right-5 cursor-pointer border p-2 rounded hover:bg-primary hover:text-white hover:border-primary transition-colors ${
+          className={`absolute top-6 right-6 cursor-pointer border p-2 rounded hover:bg-primary hover:text-white hover:border-primary transition-colors ${
             editingEnabled && "bg-slate-200 border-primary text-primary"
           }`}
           size={36}

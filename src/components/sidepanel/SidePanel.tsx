@@ -90,18 +90,6 @@ const SidePanel = () => {
               </li>
               <li>
                 <NavLink
-                  to="/profile"
-                  className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-3 font-medium ease-in-out ${
-                    pathname.includes("profile") &&
-                    "bg-primary text-primary-foreground"
-                  }`}
-                >
-                  <User className="h-5 w-5" />
-                  Profile
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
                   to="/assets"
                   className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-3 font-medium ease-in-out ${
                     pathname.split("/")[1] == "assets" &&
@@ -117,19 +105,32 @@ const SidePanel = () => {
                   Settings
                 </h3>
               </li>
-
               <li>
                 <NavLink
-                  to="/settings"
+                  to="/profile"
                   className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-3 font-medium ease-in-out ${
-                    pathname.includes("settings") &&
+                    pathname.includes("profile") &&
                     "bg-primary text-primary-foreground"
                   }`}
                 >
-                  <Settings className="h-5 w-5" />
-                  Settings
+                  <User className="h-5 w-5" />
+                  Profile
                 </NavLink>
               </li>
+              {(user.role == "admin" || user.role == "manager") && (
+                <li>
+                  <NavLink
+                    to="/settings"
+                    className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-3 font-medium ease-in-out ${
+                      pathname.includes("settings") &&
+                      "bg-primary text-primary-foreground"
+                    }`}
+                  >
+                    <Settings className="h-5 w-5" />
+                    Settings
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </nav>
