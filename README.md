@@ -2,6 +2,12 @@
 
 This is the frontend of Asset Manager Web Application. This project uses React, TypeScript, TailwindCSS, ShadCN, and Vite.
 
+## Project repositories
+
+- [Backend](https://github.com/chamikacme/asset-manager-backend) - Nest.js
+- [Frontend](https://github.com/chamikacme/asset-manager-frontend) - React.js
+- [Public Site](https://github.com/chamikacme/asset-manager-public) - HTML/ CSS
+
 ## Prerequisites
 
 Before you begin, ensure you have the following tools installed on your machine:
